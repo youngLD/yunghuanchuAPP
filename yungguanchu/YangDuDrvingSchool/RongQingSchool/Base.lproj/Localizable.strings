@@ -1,0 +1,95 @@
+/* 
+  Localizable.strings
+  RongQingSchool
+
+  Created by caitong on 15/9/2.
+  Copyright (c) 2015年 荣庆通达驾校. All rights reserved.
+*/
+/*
+ Localizable.strings
+ RongQingSchool
+ 
+ Created by caitong on 15/9/2.
+ Copyright (c) 2015年 荣庆通达驾校. All rights reserved.
+ */
+//网络问题
+"network.ex"="暂时无法连接服务器";
+"server.error"="服务器异常";
+"serverData.error"="返回数据错误";
+"loging"="登录中...";
+"loading"="加载中...";
+"requestFailed"="暂时无法连接服务器";
+"net.timeout"="连接超时";
+"noData" = "暂时没有数据";
+"no.resource" = "资源已经不存在";
+"no.permission" = "您无权限查看该资源";
+"auth.failed" = "认证失败";
+"client.error" = "客户端请求错误";
+
+//字符串判断
+"usernameandpwd"="用户名和密码都不能为空!";
+"username.required"="用户名不能为空";
+"password.required"="密码不能为空";
+
+//登陆
+"login.fail"="用户名或密码错误";
+"loginfail"="登录失败";
+"cannotEmpty" = "信息不能为空，请填写！";
+//设置手机号码
+"wrong_phone" = "手机格式不正确！";
+//提交成功
+"editInfoSuccess" = "提交成功！";
+"clearCache" = "正在清理缓存。。。";
+//清除缓存成功
+"delCacheSuccess" = "已清除！";
+//收藏成功
+"collectSuccess" = "收藏成功！";
+//收藏失败
+"collectFaild" = "收藏失败！";
+//移除收藏成功
+"removeCollectSuccess" = "移除收藏成功！";
+//移除收藏失败
+"removeCollectFaild" = "移除收藏失败！";
+
+//没有准驾车型
+"noDataWithCarType" = "该学习类型没有准驾车型，请选择其他学习类型";
+
+//请先选择学习类型
+"selectStudyTypeFirst" = "请先选择学习类型";
+
+"verifyCodeSendSuccess" = "短信验证码发送成功，请注意查收";
+
+"pleaseSelectStudyType" = "请选择学习类型";
+"pleaseSelectCarType" = "请选择准驾类型";
+"pleaseSelectStudyAddress" = "请选择学车地点";
+"pleaseInputName" = "请输入姓名";
+"pleaseSelectGender" = "请选择性别";
+"pleaseInputIDCard" = "请输入身份证号";
+"pleaseInputMobile" = "请输入手机号码";
+"pleaseInputVerifyCode" = "请输入验证码";
+"pleaseInputMobile" = "请输入手机号码";
+"verifyCodeWrong" = "验证码错误";
+"veservationNoPermssion" = "您不能进行该项预约";
+"SoltlistItemMinOne" = "至少选择一个时间段";
+"reservationSuccess" = "预约成功";
+"startIsMust" = "必须选择评级";
+"userNameFormatWrong" = "用户名格式不正确";
+"userNameChangeSuccess" = "用户名修改成功";
+"oldPasswordIsNedd" = "请输入旧密码";
+"newpasswordNotSame" = "新密码不一致";
+"passwordChangeSuccess" = "密码修改成功";
+"logoutSuccess" = "退出登录成功";
+"changeHeadPicutreSuccess" = "头像上传成功";
+"suggestionSuccess" = "投诉建议提交成功";
+"suggestionCanNotEmpty" = "投诉对象和内容不能为空";
+"examCommitSuccess" = "考试记录提交成功";
+"pleaseInputReturnVeservationReason" = "请输入退约原因";
+"reservationCancleSuccess" = "预约取消成功";
+"pleaseInputReturnMoneyReason" = "请输入退费原因";
+"returnMoneySuccess" = "提交成功";
+"noQuestion" = "没有试题";
+"haveNoMoreMoney" = "您的余额已不足";
+"noRevervationEvaluationData" = "暂无评价";
+"noRevervationHistoryData" = "暂无预约数据";
+"noRevervationData" = "暂无预约";
+"pleaseSelectYYR" = "请选择介绍人";
