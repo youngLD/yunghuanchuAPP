@@ -8,7 +8,7 @@
 
 #import "TGViewController.h"
 #import "HomeViewController.h"
-#import "SchoolDetailController.h"
+#import "YunGuanHomePageViewController.h"
 #import "ReservationHomeController.h"
 #import "TabBarViewController.h"
 #import "PersonnalViewController.h"
@@ -37,7 +37,7 @@ BOOL isMainViewDisplaying;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:[[SchoolDetailController alloc] init]];
+    UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:[[YunGuanHomePageViewController alloc] init]];
     UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:[[HomeViewController alloc] init]];
     UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:[[ReservationHomeController alloc] init]];
     self.mainViewController = [[TabBarViewController alloc] init];

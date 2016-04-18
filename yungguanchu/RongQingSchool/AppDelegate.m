@@ -39,10 +39,10 @@ BOOL needDisplayGuideView = NO;
     
     
     
-    NSString *path = NSHomeDirectory();//主目录
+    //NSString *path = NSHomeDirectory();//主目录
     //NSLog(@"NSHomeDirectory:%@",path);
-    NSString *userName = NSUserName();//与上面相同
-    NSString *rootPath = NSHomeDirectoryForUser(userName);
+   // NSString *userName = NSUserName();//与上面相同
+    //NSString *rootPath = NSHomeDirectoryForUser(userName);
     //NSLog(@"NSHomeDirectoryForUser:%@",rootPath);
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory=[paths objectAtIndex:0];//Documents目录

@@ -8,7 +8,6 @@
 
 #import "SchoolDetailController.h"
 #import "TabBarViewController.h"
-#import "TabBarViewController.h"
 #import "EntryViewController.h"
 #import "WayListCell.h"
 #import "UIButton+EnlargeArea.h"

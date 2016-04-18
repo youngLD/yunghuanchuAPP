@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GeTuiSdk.h"
-#import "LeftSlideViewController.h"
 #import "Reachability.h"
 
 #define kGtAppId           @"yNDlpZOo7nAwNestkUZpJ9"

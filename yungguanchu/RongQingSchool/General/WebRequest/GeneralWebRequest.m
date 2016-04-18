@@ -99,14 +99,14 @@
         }
         
         if(haveNewVersion){
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检测到新版本" message:[resultDic objectForKey:@"Msg"] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
-            [alert show];
-            [alert uxy_handlerClickedButton:^(UIAlertView *alertView, NSInteger btnIndex) {
-                if(btnIndex == 1){
-                    NSURL *url = [NSURL URLWithString:[[resultDic objectForKey:@"appVersion"] objectForKey:@"downloadPath"]];
-                    [[UIApplication sharedApplication] openURL:url];
-                }
-            }];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检测到新版本" message:[resultDic objectForKey:@"Msg"] delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"更新", nil];
+//            [alert show];
+//            [alert uxy_handlerClickedButton:^(UIAlertView *alertView, NSInteger btnIndex) {
+//                if(btnIndex == 1){
+//                    NSURL *url = [NSURL URLWithString:[[resultDic objectForKey:@"appVersion"] objectForKey:@"downloadPath"]];
+//                    [[UIApplication sharedApplication] openURL:url];
+//                }
+//            }];
         }
         else{
             NSDictionary *dic = @{@"flag":[NSNumber numberWithBool:haveNewVersion]};
@@ -116,5 +116,16 @@
     } failedBlock:^(NSDictionary *resultDic) {
         failedBlock(resultDic);
     }];
+}
+-(void)GetHomePageInfoSuccessBlock:(SuccessResponeBlock)successBlock failedBlock:(FailedResponeBlock)failedBlock
+{
+    self.webRequest = [[WebRequest alloc] init];
+    
+    [self.webRequest requestGetWithAction:Home_page WithParameter:nil successBlock:^(NSDictionary *resultDic) {
+        successBlock(resultDic);
+    } failedBlock:^(NSDictionary *resultDic) {
+        failedBlock(resultDic);
+    }];
+
 }
 @end

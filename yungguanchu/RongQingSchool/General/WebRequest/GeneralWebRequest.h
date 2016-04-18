@@ -41,5 +41,6 @@ typedef void(^FailedResponeBlock)(NSDictionary *resultDic);
  *  @param failedBlock
  */
 -(void)requestVersionInfoSuccessBlock:(SuccessResponeBlock)successBlock failedBlock:(FailedResponeBlock)failedBlock;
-
+//获取首页详情
+-(void)GetHomePageInfoSuccessBlock:(SuccessResponeBlock)successBlock failedBlock:(FailedResponeBlock)failedBlock;
 @end
