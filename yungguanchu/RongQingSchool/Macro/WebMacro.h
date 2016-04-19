@@ -16,9 +16,9 @@
 #define ERROR_DICTINFO(ErrorDomain,ErrorCode,ErroeDictionary) [[NSError alloc] initWithDomain:[NSString stringWithFormat:ErrorDomain] code:ErrorCode userInfo:ErroeDictionary];
 
 
-#define SERVER_IP  @"http://192.168.1.200/"//测试地址
+//#define SERVER_IP  @"http://192.168.1.200/"//测试地址
 
-//#define SERVER_IP @"http://ygc.yixueyijia.cn/"//正式地址
+#define SERVER_IP @"http://ygc.yixueyijia.cn/"//正式地址
 #define VIDEO_SERVER_IP @"http://115.28.228.147:8080"
 
 //登录
