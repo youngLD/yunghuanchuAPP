@@ -13,10 +13,11 @@
 #import "UIButton+EnlargeArea.h"
 #import "MapViewController.h"
 #import "JSONKit.h"
+#import "UIImageView+WebCache.h"
 extern BOOL isMainViewDisplaying;
 
 @interface SchoolDetailController ()
-
+@property (nonatomic,strong) NSString *uid;
 @end
 
 @implementation SchoolDetailController
@@ -44,7 +45,15 @@ extern BOOL isMainViewDisplaying;
     isMainViewDisplaying = NO;
     [super viewDidDisappear:animated];
 }
-
+-(id)initWithSchoolUid:(NSString *)uid
+{
+    self=[super init];
+    if (self) {
+        self.uid=uid;
+        self.hidesBottomBarWhenPushed=YES;
+    }
+    return self;
+}
 -(void)initView{
     self.bgScrollView.alwaysBounceVertical = YES;
     self.bgScrollView.backgroundColor = MAIN_VIEW_COLOR;
@@ -67,7 +76,8 @@ extern BOOL isMainViewDisplaying;
     self.jishiBanBtn.layer.borderColor = UIColorFromRGB(0, 182, 248).CGColor;
     self.jishiBanBtn.layer.borderWidth = 1;
     self.jishiBanBtn.layer.cornerRadius = 4;
-    
+    self.heardView.layer.masksToBounds=YES;
+    self.heardView.layer.cornerRadius=self.heardView.frame.size.width/2;
     self.cellNib = [UINib nibWithNibName:@"WayListCell" bundle:nil];
     [self.wayTableView registerNib:self.cellNib forCellReuseIdentifier:@"cellid"];
     self.wayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -90,7 +100,8 @@ extern BOOL isMainViewDisplaying;
     
     self.request = [[WebRequest alloc] init];
     [Utils addProgressHUBInView:self.view textInfo:@"loading" delegate:nil];
-    [self.request requestGetWithAction:Action_SchoolInf WithParameter:nil successBlock:^(NSDictionary *resultDic) {
+    NSDictionary *dic=[[NSDictionary alloc]initWithObjects:@[self.uid] forKeys:@[@"jxcode"]];
+    [self.request requestGetWithAction:Action_SchoolInf WithParameter:dic successBlock:^(NSDictionary *resultDic) {
         
         [self layoutViews:resultDic];
         [[NSUserDefaults standardUserDefaults] setObject:resultDic forKey:@"school_info"];
@@ -115,7 +126,7 @@ extern BOOL isMainViewDisplaying;
                                        self.schoolDescLb.frame.size.width, 90)
                        font:[UIFont systemFontOfSize:15]];
     
-    
+     [self.heardView sd_setImageWithURL:[NSURL URLWithString:[self.dataDic objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
     self.wayAry = [self.dataDic objectForKey:@"lisWays"];
     [self.wayTableView reloadData];
     self.wayTableView.frame = CGRectMake(self.wayTableView.frame.origin.x,
@@ -175,10 +186,10 @@ extern BOOL isMainViewDisplaying;
 
 -(NSArray*)getNewBackButtons
 {
-    UIButton *backbtn=[[UIButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+    UIButton *backbtn=[[UIButton alloc] initWithFrame:CGRectMake(5, 0, 40, 34)];
     [backbtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
     [backbtn addTarget:self action:@selector(showLeftMenu:) forControlEvents:UIControlEventTouchUpInside];
-    [backbtn setBackgroundImage:[UIImage imageNamed:@"left_menu_bar"] forState:UIControlStateNormal];
+    [backbtn setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
     //    [backbtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
 //    [backbtn setTitle:@"♬" forState:UIControlStateNormal];
     UIBarButtonItem *leftitem=[[UIBarButtonItem alloc] initWithCustomView:backbtn];
@@ -219,8 +230,7 @@ extern BOOL isMainViewDisplaying;
 
 -(IBAction)showLeftMenu:(id)sender{
     
-    TabBarViewController *tabbarVc = (TabBarViewController *)self.tabBarController;
-    [tabbarVc.leftMenuController showLeftMenu];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

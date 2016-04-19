@@ -101,7 +101,7 @@
 #define Action_StuCharge @"AppService/stuCharge.ashx?"
 
 //驾校详情
-#define Action_SchoolInf @"AppService/schoolInf.ashx"
+#define Action_SchoolInf @"AppService/schoolInf.ashx?"
 
 //获取未读消息
 #define Action_GetMsg @"AppService/GetMsg.ashx?"
@@ -132,7 +132,8 @@
 
 //文章详情
 #define Action_ArticleDetail @"/api/examarticle/detail"
-
+//公告详情
+#define Action_NewsDetial @"/AppService/Notices.ashx?"
 //秘籍指导
 #define Action_MJZDList @"/api/examarticle/mjzd"
 

@@ -13,6 +13,9 @@
 #import "NewsTableViewCell.h"
 #import "JiaoXiaoNameTableViewCell.h"
 #import "UIImageView+WebCache.h"
+#import "SchoolDetailController.h"
+#import "NewsDetialViewController.h"
+extern BOOL isMainViewDisplaying;
 @interface YunGuanHomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) GeneralWebRequest *generalWR;
 @property (nonatomic,strong) UITableView *tableView;
@@ -21,10 +24,20 @@
 @end
 
 @implementation YunGuanHomePageViewController
--(void)viewWillAppear:(BOOL)animated
-{
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    TabBarViewController *tabbarVc = (TabBarViewController *)self.tabBarController;
+    [tabbarVc.tabBar bringSubviewToFront:tabbarVc.tabbarBgView];
     [self getDataList];
 }
+
+-(void)viewDidDisappear:(BOOL)animated{
+    isMainViewDisplaying = NO;
+    [super viewDidDisappear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGFloat kwidth=[UIScreen mainScreen].bounds.size.width;
@@ -41,8 +54,8 @@
     [self.view addSubview:tableView];
     self.tableView=tableView;
      tableView.separatorStyle = UITableViewCellSelectionStyleNone;
-//    self.navigationItem.rightBarButtonItems = [self getNewRightButtons];
-    // Do any additional setup after loading the view.
+//    TabBarViewController *tabbarVc = (TabBarViewController *)self.tabBarController;
+//    [tabbarVc.tabBar bringSubviewToFront:tabbarVc.tabbarBgView];
 }
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -101,7 +114,34 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    if (section==0) {
+        return 50;
+    }
     return 20;
+}
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section==0) {
+        CGFloat with =[UIScreen mainScreen].bounds.size.width;
+        UIView *view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, with, 50)];
+        UILabel *titleLab=[[UILabel alloc]initWithFrame:CGRectMake(with/2-100, 20, 200, 20)];
+        [titleLab setTextColor:[UIColor darkGrayColor]];
+        [titleLab setTextAlignment:NSTextAlignmentCenter];
+        [titleLab setText:@"公告栏"];
+        [view addSubview:titleLab];
+        UIButton *moreBtn=[[UIButton alloc]initWithFrame:CGRectMake(with-60, 20, 50, 20)];
+        [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
+        [moreBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [moreBtn addTarget:self action:@selector(moreNewsBtnAcion) forControlEvents:UIControlEventTouchUpInside];
+        [view addSubview:moreBtn];
+        return view;
+    }
+    UIView *view=[UIView new];
+    return view;
+}
+-(void)moreNewsBtnAcion
+{
+    
 }
 -(void)getDataList
 {
@@ -146,7 +186,25 @@
     
     return arr;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    if(indexPath.section==0)
+    {
+        NSDictionary *dic=self.newsAry[indexPath.row];
+        //NSLog(@"%@",dic);
+        NewsDetialViewController *newsdetialViewC=[[NewsDetialViewController alloc]initWithUid:[dic objectForKey:@"Uid"]];
+        [self.navigationController pushViewController:newsdetialViewC animated:YES];
+        return;
+    }
+    if(indexPath.section==1)
+    {
+        NSDictionary *dic=self.jiaxiaoAry[indexPath.row];
+        SchoolDetailController *schoolV=[[SchoolDetailController alloc]initWithSchoolUid:[dic objectForKey:@"jxcode"]];
+        [self.navigationController pushViewController:schoolV animated:YES];
+        return;
+    }
+}
 -(IBAction)showLeftMenu:(id)sender{
     
     TabBarViewController *tabbarVc = (TabBarViewController *)self.tabBarController;

@@ -1705,6 +1705,8 @@
 		EA79A0DA1CC5F39100909F42 /* JiaoXiaoNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79A0D91CC5F39100909F42 /* JiaoXiaoNameTableViewCell.m */; };
 		EA79A0DC1CC5F55800909F42 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA79A0DB1CC5F55800909F42 /* region@2x.png */; };
 		EA79A0DE1CC5FC8A00909F42 /* MoRentu.png in Resources */ = {isa = PBXBuildFile; fileRef = EA79A0DD1CC5FC8A00909F42 /* MoRentu.png */; };
+		EA79A0E31CC6136600909F42 /* NewsDetialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79A0E21CC6136600909F42 /* NewsDetialViewController.m */; };
+		EA79A0E61CC627F500909F42 /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79A0E51CC627F500909F42 /* NewsListViewController.m */; };
 		EA958B921C71A40400A542B8 /* libGeTuiSdk-1.3.2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA958B911C71A40400A542B8 /* libGeTuiSdk-1.3.2.a */; };
 		EA958B941C71A6A200A542B8 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EA958B931C71A6A200A542B8 /* libz.tbd */; };
 		EA958B961C71A6B100A542B8 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = EA958B951C71A6B100A542B8 /* libsqlite3.tbd */; };
@@ -3642,6 +3644,10 @@
 		EA79A0D91CC5F39100909F42 /* JiaoXiaoNameTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaoXiaoNameTableViewCell.m; sourceTree = "<group>"; };
 		EA79A0DB1CC5F55800909F42 /* region@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "region@2x.png"; sourceTree = "<group>"; };
 		EA79A0DD1CC5FC8A00909F42 /* MoRentu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MoRentu.png; sourceTree = "<group>"; };
+		EA79A0E11CC6136600909F42 /* NewsDetialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetialViewController.h; sourceTree = "<group>"; };
+		EA79A0E21CC6136600909F42 /* NewsDetialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetialViewController.m; sourceTree = "<group>"; };
+		EA79A0E41CC627F500909F42 /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
+		EA79A0E51CC627F500909F42 /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		EA958B901C71A40400A542B8 /* GeTuiSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeTuiSdk.h; sourceTree = "<group>"; };
 		EA958B911C71A40400A542B8 /* libGeTuiSdk-1.3.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libGeTuiSdk-1.3.2.a"; sourceTree = "<group>"; };
 		EA958B931C71A6A200A542B8 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -6039,6 +6045,24 @@
 			path = new_questionImages;
 			sourceTree = "<group>";
 		};
+		EA79A0DF1CC6135000909F42 /* NewsDetialViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA79A0E11CC6136600909F42 /* NewsDetialViewController.h */,
+				EA79A0E21CC6136600909F42 /* NewsDetialViewController.m */,
+			);
+			path = NewsDetialViewController;
+			sourceTree = "<group>";
+		};
+		EA79A0E01CC6135000909F42 /* NewsListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA79A0E41CC627F500909F42 /* NewsListViewController.h */,
+				EA79A0E51CC627F500909F42 /* NewsListViewController.m */,
+			);
+			path = NewsListViewController;
+			sourceTree = "<group>";
+		};
 		EA958B8F1C71A40400A542B8 /* GtSdkLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -6051,6 +6075,8 @@
 		EACF70D11CC4A2A000B8B8F4 /* yunguanchuViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA79A0DF1CC6135000909F42 /* NewsDetialViewController */,
+				EA79A0E01CC6135000909F42 /* NewsListViewController */,
 				EA79A0DD1CC5FC8A00909F42 /* MoRentu.png */,
 				EA79A0DB1CC5F55800909F42 /* region@2x.png */,
 				EACF70D51CC4A30900B8B8F4 /* YunGuanHomePageViewController.h */,
@@ -7667,6 +7693,7 @@
 				D00603A21B96D6B50036F77A /* UIImage+MultiFormat.m in Sources */,
 				D04E20ED1C2FC6D800252D93 /* TimerReservationHeaderCell.m in Sources */,
 				D069BCB21B8C87E500AFA81F /* EntryViewController.m in Sources */,
+				EA79A0E61CC627F500909F42 /* NewsListViewController.m in Sources */,
 				D00603A01B96D6B50036F77A /* UIButton+WebCache.m in Sources */,
 				D0B10F721B93F529002682AE /* ASICloudFilesContainerRequest.m in Sources */,
 				54558FF71B84CC8600EFFE1F /* QuestionLibraryDao.m in Sources */,
@@ -7833,6 +7860,7 @@
 				EACF70D71CC4A30900B8B8F4 /* YunGuanHomePageViewController.m in Sources */,
 				D07683D51B8426D50005043C /* HomeViewController.m in Sources */,
 				D0B10F151B93E28F002682AE /* LoginView.m in Sources */,
+				EA79A0E31CC6136600909F42 /* NewsDetialViewController.m in Sources */,
 				A572DCF31B9AE318001A0792 /* DetailTypeListController.m in Sources */,
 				D0B10F681B93F528002682AE /* ASIDataCompressor.m in Sources */,
 				A5CFD7641B93026A0063B7ED /* TWRChartView.m in Sources */,
@@ -8003,7 +8031,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhihuajiaxiao;
 				PRODUCT_NAME = yunguanchuAPP;
-				PROVISIONING_PROFILE = "1f140415-02e3-4e42-92bf-eb3e1e613678";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -8030,7 +8058,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhihuajiaxiao;
 				PRODUCT_NAME = yunguanchuAPP;
-				PROVISIONING_PROFILE = "1f140415-02e3-4e42-92bf-eb3e1e613678";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -14,6 +14,7 @@
                 <outlet property="bgScrollView" destination="viP-3V-di5" id="3Ib-un-IR8"/>
                 <outlet property="expandBtn" destination="8AU-3R-E9I" id="z0l-Ls-owN"/>
                 <outlet property="headerBgView" destination="7JK-JX-4TF" id="gkk-hN-zdg"/>
+                <outlet property="heardView" destination="L9t-uc-lkE" id="4oB-oz-yew"/>
                 <outlet property="jianjieBgView" destination="1Yw-3G-U1g" id="Ds5-XZ-KrN"/>
                 <outlet property="jishiBanBtn" destination="goy-ul-SRI" id="X13-7l-gWQ"/>
                 <outlet property="liuchengBgView" destination="LuV-2X-txR" id="7g7-Hl-V7Q"/>
