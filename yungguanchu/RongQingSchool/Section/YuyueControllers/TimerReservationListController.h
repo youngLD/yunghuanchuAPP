@@ -39,6 +39,7 @@
 @property(nonatomic) BOOL menu2IsShow;
 
 @property(strong,nonatomic) IBOutlet WebRequest *request;
+@property(strong,nonatomic) WebRequest *requestSchool;
 
 @property(strong,nonatomic) NSMutableArray *dataAry;
 
@@ -51,6 +52,8 @@
 @property(strong,nonatomic) IBOutlet UIButton *dateBtn1;
 @property(strong,nonatomic) IBOutlet UIButton *dateBtn2;
 @property(strong,nonatomic) IBOutlet UIButton *dateBtn3;
+@property (weak, nonatomic) IBOutlet UIButton *dateBtn4;
+@property (weak, nonatomic) IBOutlet UIButton *dateBtn5;
 
 //时间数组
 @property(strong,nonatomic) NSMutableArray *timeAry;

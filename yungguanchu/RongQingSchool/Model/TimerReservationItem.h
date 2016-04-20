@@ -90,6 +90,31 @@
  */
 @property(strong,nonatomic) NSString *CoachStars;
 
+/**
+ *  好评数
+ */
+@property (nonatomic,copy) NSString *hpnum;
+
+/**
+ *  中评数
+ */
+@property (nonatomic,copy) NSString *zpnum;
+
+/**
+ *  差评数
+ */
+@property (nonatomic,copy) NSString *cpnum;
+
+/**
+ *  培训次数
+ */
+@property (nonatomic,copy) NSString *tranordernum;
+
+/**
+ *  所属驾校
+ */
+@property (nonatomic,copy) NSString *inschool;
+
 -(id)initWithDic:(NSDictionary *)dic;
 
 @end

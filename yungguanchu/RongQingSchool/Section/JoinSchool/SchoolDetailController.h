@@ -34,6 +34,7 @@
 @property(strong,nonatomic) WebRequest *request;
 
 @property(strong,nonatomic) IBOutlet UITableView *wayTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *heardView;
 
 @property(strong,nonatomic) IBOutlet NSArray *wayAry;
 
@@ -65,4 +66,6 @@
 @property(strong,nonatomic) NSDictionary *dataDic;
 
 @property(strong,nonatomic) IBOutlet UIButton *expandBtn;
+-(id)initWithSchoolUid:(NSString *)uid;
+
 @end

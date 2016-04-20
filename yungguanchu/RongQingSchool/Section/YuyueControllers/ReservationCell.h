@@ -31,5 +31,10 @@
 @property(strong,nonatomic) IBOutlet UILabel *yearsLb;
 
 @property(strong,nonatomic) IBOutlet UIView *starBgView;
+@property (weak, nonatomic) IBOutlet UILabel *tranNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hpNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *zpNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *cpNumLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jiaoxiaoLable;
 
 @end

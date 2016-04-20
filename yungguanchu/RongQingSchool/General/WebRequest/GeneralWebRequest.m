@@ -117,15 +117,25 @@
         failedBlock(resultDic);
     }];
 }
--(void)GetHomePageInfoSuccessBlock:(SuccessResponeBlock)successBlock failedBlock:(FailedResponeBlock)failedBlock
+-(void)GetHomePageInfoWith:(NSDictionary *)Parameter SuccessBlock:(SuccessResponeBlock)successBlock failedBlock:(FailedResponeBlock)failedBlock
 {
     self.webRequest = [[WebRequest alloc] init];
     
-    [self.webRequest requestGetWithAction:Home_page WithParameter:nil successBlock:^(NSDictionary *resultDic) {
+    [self.webRequest requestGetWithAction:Home_page WithParameter:Parameter successBlock:^(NSDictionary *resultDic) {
         successBlock(resultDic);
     } failedBlock:^(NSDictionary *resultDic) {
         failedBlock(resultDic);
     }];
 
+}
+-(void)getNewsDetialInfoWithParameter:(NSDictionary *)Parameter SuccessBlock:(SuccessResponeBlock)successBlock failedBlock:(FailedResponeBlock)failedBlock
+{
+    self.webRequest = [[WebRequest alloc] init];
+    
+    [self.webRequest requestGetWithAction:Action_NewsDetial WithParameter:Parameter successBlock:^(NSDictionary *resultDic) {
+        successBlock(resultDic);
+    } failedBlock:^(NSDictionary *resultDic) {
+        failedBlock(resultDic);
+    }];
 }
 @end

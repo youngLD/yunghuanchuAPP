@@ -15,7 +15,16 @@
 #import "CoachNameCellTableViewCell.h"
 #import<CoreText/CoreText.h>
 
-@interface TimerReservationListController ()
+#import "ZIKMenu2View.h"
+@interface TimerReservationListController ()<ZIKMenu2ViewDelegate>
+@property (nonatomic, strong) NSString *orderdate;
+@property (nonatomic, strong) NSString *price;//价格区间	说明（以‘|’分割，格式【a|b】表示价格在a与b之间）
+@property (nonatomic, strong) NSString *school;//驾校ID集合  说明：驾校id集合（以‘|’分割，格式【a|b|c|】）
+@property (nonatomic, strong) NSString *orderby;//排序条件说明：（0:综合排序,1:教龄由高到低,2:星级由高到低,3:价格由高到低）
+
+@property (nonatomic, strong) NSMutableArray *schoolMArr;
+@property (nonatomic, strong) ZIKMenu2View *menu2View;
+@property (nonatomic, strong) NSMutableArray *timeMArr;
 
 @end
 
@@ -26,8 +35,20 @@
     return self;
 }
 
+- (void)sendSchoolAndDateInfo:(NSDictionary *)info {
+    self.school = info[@"school"];
+    self.selectedDate = info[@"orderdate"];
+    [self hideMenu2completion:^(BOOL finished) {
+        self.titlePic2.image = [UIImage imageNamed:@"list_arrow_selected"];
+        self.titlePic2.transform = CGAffineTransformMakeRotation(M_PI/1000*999.99);
+
+    }];
+    [self requestData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //NSLog(@"viewDidLoad");
     
     
     self.title = @"培训预约";
@@ -35,8 +56,53 @@
     self.navigationItem.rightBarButtonItems = [self getRightButtons];
     
     [self initView];
-    
+    [self initData];
+    //if(self.menu1IsShow){
+        [self hideMenu1completion:^(BOOL finished) {
+
+        }];
+    //}
+    [self requestSchools];
     [self requestData];
+}
+
+- (void)initData {
+    self.orderby = @"0";
+    self.schoolMArr = [NSMutableArray arrayWithCapacity:3];
+    self.timeMArr = [NSMutableArray arrayWithCapacity:2];
+
+}
+
+
+- (void)requestSchools {
+    self.requestSchool = [[WebRequest alloc] init];
+     [self.requestSchool requestGetWithAction:Action_SchoolList WithParameter:nil successBlock:^(NSDictionary *resultDic) {
+         CLog(@"%@",resultDic);
+         if ([resultDic[@"Success"] integerValue] == 1) {
+             self.schoolMArr = resultDic[@"Result"];
+             if (!self.menu2View) {
+                 self.menu2View = [[ZIKMenu2View alloc] initWithFrame:CGRectMake(0, -UISCREEN_SIZE.height*2/3, UISCREEN_SIZE.width, UISCREEN_SIZE.height*2/3) withSchoolArray:self.schoolMArr];
+                 self.menu2View.delegate = self;
+                 [self.view addSubview:self.menu2View];
+             }
+
+         }
+         else {
+             [Utils showMessage:[NSString stringWithFormat:@"%@",resultDic[@"Msg"]]];
+
+         }
+
+     } failedBlock:^(NSDictionary *resultDic) {
+         CLog(@"%@",resultDic);
+
+     } ];
+//    self.requestSchool = [[WebRequest alloc] init];
+//    [self.requestSchool requestPostWithAction:Action_SchoolList WithParameter:nil successBlock:^(NSDictionary *resultDic) {
+//        CLog(@"%@",resultDic);
+//    } failedBlock:^(NSDictionary *resultDic) {
+//        CLog(@"%@",resultDic);
+//
+//    }];
 }
 
 -(void)initView{
@@ -75,16 +141,32 @@
 }
 
 -(void)requestData{
-    NSDictionary *postParam = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [UserInfo shareUserInfo].uId,@"studentId",
-                               self.selectedDate,@"orderdate",
-                               self.selectedCoachID,@"strjlid",
-                               self.searchStr,@"strsearch",
-                               self.sffx,@"sffx", nil];
-    
+    CLog(@"school:%@",self.school);
+    CLog(@"selectedDate%@",self.selectedDate);
+//    NSDictionary *postParam = [NSDictionary dictionaryWithObjectsAndKeys:
+//                               [UserInfo shareUserInfo].uId,@"studentId",
+//                               self.selectedDate,@"orderdate",
+//                               self.selectedCoachID,@"strjlid",
+//                               self.searchStr,@"strsearch",
+//                               self.sffx,@"sffx",
+//                               self.price,@"price",
+//                               self.school,@"school",
+//                               self.orderby,@"orderby",
+//                               nil];
+    NSMutableDictionary *postParam = [NSMutableDictionary dictionary];
+    [postParam setObject:[UserInfo shareUserInfo].uId forKey:@"studentId"];//
+    [postParam setObject:self.selectedDate forKey:@"orderdate"];//
+    postParam[@"strjlid"] = self.selectedCoachID;//
+    postParam[@"strsearch"] = self.searchStr;//
+    postParam[@"sffx"] = self.sffx;//
+    postParam[@"price"] = self.price;
+    postParam[@"school"] = self.school;
+    postParam[@"orderby"] = self.orderby;//
+    CLog(@"param:%@",postParam);
     self.request = [[WebRequest alloc] init];
     [Utils addProgressHUBInView:self.view textInfo:@"loading" delegate:nil];
     [self.request requestGetWithAction:Action_TrainingJlList WithParameter:postParam successBlock:^(NSDictionary *resultDic) {
+        CLog(@"%@",resultDic);
         
         //菜单日期
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -95,20 +177,31 @@
         NSDate *tomorrowDate = [nowDate dateByAddingTimeInterval:24*3600];
         NSDate *afterTomorrowDate = [tomorrowDate dateByAddingTimeInterval:24*3600];
         NSDate *afterAfterTomorrowDate = [afterTomorrowDate dateByAddingTimeInterval:24*3600];
-        
+
+        if(self.timeMArr){
+            [self.timeMArr removeAllObjects];
+        }
+        else{
+            self.timeMArr = [NSMutableArray arrayWithCapacity:2];
+        }
         if(self.timeAry){
             [self.timeAry removeAllObjects];
         }
         else{
-            self.timeAry = [NSMutableArray arrayWithCapacity:20];
+            self.timeAry = [NSMutableArray arrayWithCapacity:4];
         }
-        [self.timeAry addObjectsFromArray:@[[df stringFromDate:tomorrowDate],
+
+        [self.timeMArr addObjectsFromArray:@[[df stringFromDate:tomorrowDate],
                                            [df stringFromDate:afterTomorrowDate],
                                            [df stringFromDate:afterAfterTomorrowDate]]];
-        
+        if (!self.menu2View.timeArr) {
+            self.menu2View.timeArr = self.timeMArr;
+
+        }
+        [self.timeAry addObjectsFromArray:@[@"默认排序",@"教龄由高到低",@"星级由高到低",@"价格由高到低",@"价格由低到高"]];
         CLog(@"%@",self.timeAry);
         int i = 0;
-        for(UIButton *btn in @[self.dateBtn1,self.dateBtn2,self.dateBtn3]){
+        for(UIButton *btn in @[self.dateBtn1,self.dateBtn2,self.dateBtn3,self.dateBtn4,self.dateBtn5]){
             [btn setTitle:[NSString stringWithFormat:@"       %@",self.timeAry[i]] forState:UIControlStateNormal];
             btn.tag = i;
             i++;
@@ -131,7 +224,7 @@
             }
         }
         if(!self.dataAry.count){
-            [Utils showMessage:@"noRevervationData"];
+            [Utils showMessage:@"暂无信息"];
         }
         
         if(self.coachAry){
@@ -180,7 +273,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(tableView == self.tableview){
-        return 80;
+        return 128;
     }
     else{
         return 40;
@@ -212,6 +305,17 @@
         cell.nameLb.text = item.Jlxm;
         cell.sexLb.text = item.Jlxb;
         cell.mobileLb.text = item.Jldh;
+        cell.tranNumLabel.text = NSStringFromFormat(@"培训次数:%@",item.tranordernum);
+        cell.hpNumLabel.text = NSStringFromFormat(@"好评数:%@",item.hpnum);
+        cell.zpNumLabel.text = NSStringFromFormat(@"中评数:%@",item.zpnum);
+        cell.cpNumLabel.text = NSStringFromFormat(@"差评数:%@",item.cpnum);
+        if (item.Syme.integerValue > 0) {
+            [cell.yuyueBtn setTitle:@"可预约" forState:UIControlStateNormal];
+        }
+        else {
+            [cell.yuyueBtn setTitle:@"不可预约" forState:UIControlStateNormal];
+        }
+        cell.jiaoxiaoLable.text = item.inschool;
         
         NSMutableAttributedString *ats = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"单价: %@",item.OrderPrice]];
         [ats addAttribute:NSForegroundColorAttributeName
@@ -274,8 +378,8 @@
 
 #pragma mark - 菜单弹出
 -(IBAction)selectMenu1Btn:(UIButton *)sender{
-    self.selectedDate = self.timeAry[sender.tag];
-    self.titleLb1.text = self.selectedDate;
+    self.orderby = NSStringFromInt(sender.tag);
+    self.titleLb1.text = self.timeAry[sender.tag];
     [self showOrHideMenu1:nil];
     
     [self requestData];
@@ -291,11 +395,14 @@
     if(self.btn1.isSelected){
         if(self.menu1IsShow){
             [self hideMenu1completion:^(BOOL finished) {
-                
+                self.titlePic1.image = [UIImage imageNamed:@"list_arrow_selected"];
+                self.titlePic1.transform = CGAffineTransformMakeRotation(0);
+
             }];
         }
         else{
             [self showMenu1];
+            self.titlePic1.transform = CGAffineTransformMakeRotation(M_PI/1000*999.99);
         }
     }
     else{
@@ -390,7 +497,8 @@
 //        CGRect r = self.menuBgView2.frame;
 //        r.origin.y = CGRectGetMaxY(self.indicatorView.frame)-r.size.height;
 //        self.menuBgView2.frame = r;
-        self.top2.constant = -self.menuBgView2.frame.size.height+CGRectGetMaxY(self.indicatorView.frame);
+        self.menu2View.frame = CGRectMake(0, -UISCREEN_SIZE.height*2/3, UISCREEN_SIZE.width, UISCREEN_SIZE.height*2/3);
+        //self.top2.constant = -self.menuBgView2.frame.size.height+CGRectGetMaxY(self.indicatorView.frame);
         [self.view layoutIfNeeded];
         self.menu2IsShow = NO;
     } completion:^(BOOL finished) {
@@ -406,12 +514,17 @@
     self.btn1.userInteractionEnabled = NO;
     self.btn2.userInteractionEnabled = NO;
     self.grayBgControl.hidden = NO;
-    
+//    [UIView animateWithDuration:.3 animations:^{
+//        self.shopView.frame = CGRectMake(0, 0, SCREEN_SIZE.width, SCREEN_SIZE.height);
+//    }];
+//
     [UIView animateWithDuration:0.3 animations:^{
 //        CGRect r = self.menuBgView2.frame;
 //        r.origin.y = CGRectGetMaxY(self.indicatorView.frame);
 //        self.menuBgView2.frame = r;
-        self.top2.constant = CGRectGetMaxY(self.indicatorView.frame);
+        self.menu2View.frame = CGRectMake(0, CGRectGetMaxY(self.indicatorView.frame)
+, UISCREEN_SIZE.width, UISCREEN_SIZE.height*2/3);
+        //self.top2.constant = CGRectGetMaxY(self.indicatorView.frame);
         [self.view layoutIfNeeded];
         self.menu2IsShow = YES;
     } completion:^(BOOL finished) {

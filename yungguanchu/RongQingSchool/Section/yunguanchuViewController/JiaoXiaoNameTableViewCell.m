@@ -24,6 +24,7 @@
         [self.contentView addSubview:self.imageV];
         self.titleLab=[[UILabel alloc]initWithFrame:CGRectMake(90, 15, 130, 20)];
         [self.titleLab setFont:[UIFont systemFontOfSize:15]];
+        [self.titleLab setTextColor:[UIColor darkGrayColor]];
         [self.contentView addSubview:self.titleLab];
         self.detialLab=[[UILabel alloc]initWithFrame:CGRectMake(100, 35, 190, 18)];
         [self.detialLab setFont:[UIFont systemFontOfSize:13]];
@@ -49,6 +50,7 @@
     self.titleLab.text=[InfoDic objectForKey:@"schoolName"];
     [self.imageV sd_setImageWithURL:[NSURL URLWithString:[InfoDic objectForKey:@"pic"]] placeholderImage:[UIImage imageNamed:@"MoRentu"]];
 }
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
