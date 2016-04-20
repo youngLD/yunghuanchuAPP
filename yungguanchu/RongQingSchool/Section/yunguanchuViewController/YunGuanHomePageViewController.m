@@ -15,6 +15,7 @@
 #import "UIImageView+WebCache.h"
 #import "SchoolDetailController.h"
 #import "NewsDetialViewController.h"
+#import "NewsListViewController.h"
 extern BOOL isMainViewDisplaying;
 @interface YunGuanHomePageViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) GeneralWebRequest *generalWR;
@@ -78,8 +79,7 @@ extern BOOL isMainViewDisplaying;
         NewsTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:[NewsTableViewCell IDStr]];
         if (!cell) {
             cell=[[NewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[NewsTableViewCell IDStr]];
-            cell.selectionStyle=UITableViewCellSelectionStyleNone;
-            [cell.textLabel setFont:[UIFont systemFontOfSize:15]]; 
+         
             
         }
         NSDictionary *dic=self.newsAry[indexPath.row];
@@ -141,7 +141,8 @@ extern BOOL isMainViewDisplaying;
 }
 -(void)moreNewsBtnAcion
 {
-    
+    NewsListViewController *newsListVC=[[NewsListViewController alloc]init];
+    [self.navigationController pushViewController:newsListVC animated:YES];
 }
 -(void)getDataList
 {
@@ -151,7 +152,8 @@ extern BOOL isMainViewDisplaying;
     }
     self.generalWR=[GeneralWebRequest new];
     __weak typeof(self) weakSelf=self;
-    [self.generalWR GetHomePageInfoSuccessBlock:^(NSDictionary *resultDic) {
+    [self.generalWR GetHomePageInfoWith:nil
+    SuccessBlock:^(NSDictionary *resultDic) {
         if ([[resultDic objectForKey:@"Success"] integerValue]) {
               NSDictionary *result=[resultDic objectForKey:@"Result"];
             NSArray *newsAry=[[result objectForKey:@"Noticeresult"] objectForKey:@"Result"];
@@ -211,6 +213,7 @@ extern BOOL isMainViewDisplaying;
     [tabbarVc.leftMenuController showLeftMenu];
     
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

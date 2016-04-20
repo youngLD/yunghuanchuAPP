@@ -18,6 +18,8 @@
         [lineView setBackgroundColor:[UIColor colorWithRed:188/255.f green:188/255.f blue:188/255.f alpha:1]];
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         [self addSubview:lineView];
+        self.selectionStyle=UITableViewCellSelectionStyleNone;
+        [self.textLabel setFont:[UIFont systemFontOfSize:15]];
          [self.textLabel setTextColor:[UIColor darkGrayColor]];
     }
     return self;

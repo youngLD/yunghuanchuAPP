@@ -1701,6 +1701,14 @@
 		EA1FA7901C5D9A5B004E93C5 /* QuestionItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FA78F1C5D9A5B004E93C5 /* QuestionItem.m */; };
 		EA1FA7931C5DA138004E93C5 /* NewQuestionLibraryDao.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FA7921C5DA138004E93C5 /* NewQuestionLibraryDao.m */; };
 		EA1FA7961C5DB701004E93C5 /* NewDetailTypeDao.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1FA7951C5DB701004E93C5 /* NewDetailTypeDao.m */; };
+		EA5444B21CC70BDC00971A50 /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA5444A21CC70BDC00971A50 /* MJRefresh.bundle */; };
+		EA5444B31CC70BDC00971A50 /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444A51CC70BDC00971A50 /* MJRefreshBaseView.m */; };
+		EA5444B41CC70BDC00971A50 /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444A71CC70BDC00971A50 /* MJRefreshConst.m */; };
+		EA5444B51CC70BDC00971A50 /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444A91CC70BDC00971A50 /* MJRefreshFooterView.m */; };
+		EA5444B61CC70BDC00971A50 /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444AB1CC70BDC00971A50 /* MJRefreshHeaderView.m */; };
+		EA5444B71CC70BDC00971A50 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444AD1CC70BDC00971A50 /* UIScrollView+MJExtension.m */; };
+		EA5444B81CC70BDC00971A50 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444AF1CC70BDC00971A50 /* UIScrollView+MJRefresh.m */; };
+		EA5444B91CC70BDC00971A50 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5444B11CC70BDC00971A50 /* UIView+MJExtension.m */; };
 		EA79A0D71CC5C9D300909F42 /* NewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79A0D61CC5C9D300909F42 /* NewsTableViewCell.m */; };
 		EA79A0DA1CC5F39100909F42 /* JiaoXiaoNameTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA79A0D91CC5F39100909F42 /* JiaoXiaoNameTableViewCell.m */; };
 		EA79A0DC1CC5F55800909F42 /* region@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA79A0DB1CC5F55800909F42 /* region@2x.png */; };
@@ -3638,6 +3646,22 @@
 		EA1FA7921C5DA138004E93C5 /* NewQuestionLibraryDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewQuestionLibraryDao.m; sourceTree = "<group>"; };
 		EA1FA7941C5DB701004E93C5 /* NewDetailTypeDao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewDetailTypeDao.h; sourceTree = "<group>"; };
 		EA1FA7951C5DB701004E93C5 /* NewDetailTypeDao.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewDetailTypeDao.m; sourceTree = "<group>"; };
+		EA5444A21CC70BDC00971A50 /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		EA5444A31CC70BDC00971A50 /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		EA5444A41CC70BDC00971A50 /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		EA5444A51CC70BDC00971A50 /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		EA5444A61CC70BDC00971A50 /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		EA5444A71CC70BDC00971A50 /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		EA5444A81CC70BDC00971A50 /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		EA5444A91CC70BDC00971A50 /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		EA5444AA1CC70BDC00971A50 /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		EA5444AB1CC70BDC00971A50 /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		EA5444AC1CC70BDC00971A50 /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		EA5444AD1CC70BDC00971A50 /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		EA5444AE1CC70BDC00971A50 /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		EA5444AF1CC70BDC00971A50 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		EA5444B01CC70BDC00971A50 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		EA5444B11CC70BDC00971A50 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		EA79A0D51CC5C9D300909F42 /* NewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsTableViewCell.h; sourceTree = "<group>"; };
 		EA79A0D61CC5C9D300909F42 /* NewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsTableViewCell.m; sourceTree = "<group>"; };
 		EA79A0D81CC5F39100909F42 /* JiaoXiaoNameTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaoXiaoNameTableViewCell.h; sourceTree = "<group>"; };
@@ -4184,6 +4208,7 @@
 		D07683D01B84268F0005043C /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				EA5444A11CC70BDC00971A50 /* MJRefresh */,
 				EA958B8F1C71A40400A542B8 /* GtSdkLib */,
 				D0A52B771BB3FFDE000CC80C /* ALMoviePlayerController */,
 				A547685F1B98664A00ACC5C6 /* PerfectImageCropper */,
@@ -6045,6 +6070,29 @@
 			path = new_questionImages;
 			sourceTree = "<group>";
 		};
+		EA5444A11CC70BDC00971A50 /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				EA5444A21CC70BDC00971A50 /* MJRefresh.bundle */,
+				EA5444A31CC70BDC00971A50 /* MJRefresh.h */,
+				EA5444A41CC70BDC00971A50 /* MJRefreshBaseView.h */,
+				EA5444A51CC70BDC00971A50 /* MJRefreshBaseView.m */,
+				EA5444A61CC70BDC00971A50 /* MJRefreshConst.h */,
+				EA5444A71CC70BDC00971A50 /* MJRefreshConst.m */,
+				EA5444A81CC70BDC00971A50 /* MJRefreshFooterView.h */,
+				EA5444A91CC70BDC00971A50 /* MJRefreshFooterView.m */,
+				EA5444AA1CC70BDC00971A50 /* MJRefreshHeaderView.h */,
+				EA5444AB1CC70BDC00971A50 /* MJRefreshHeaderView.m */,
+				EA5444AC1CC70BDC00971A50 /* UIScrollView+MJExtension.h */,
+				EA5444AD1CC70BDC00971A50 /* UIScrollView+MJExtension.m */,
+				EA5444AE1CC70BDC00971A50 /* UIScrollView+MJRefresh.h */,
+				EA5444AF1CC70BDC00971A50 /* UIScrollView+MJRefresh.m */,
+				EA5444B01CC70BDC00971A50 /* UIView+MJExtension.h */,
+				EA5444B11CC70BDC00971A50 /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
 		EA79A0DF1CC6135000909F42 /* NewsDetialViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -6893,6 +6941,7 @@
 				EA1E994B1C70643F00646A66 /* 40561.jpg in Resources */,
 				EA1E98A61C70643F00646A66 /* 40289.jpg in Resources */,
 				EA1E98EE1C70643F00646A66 /* 40359.jpg in Resources */,
+				EA5444B21CC70BDC00971A50 /* MJRefresh.bundle in Resources */,
 				EA1E9AFA1C70643F00646A66 /* picture_244.jpg in Resources */,
 				EA1E98421C70643F00646A66 /* 40190.jpg in Resources */,
 				EA1E97A91C70643F00646A66 /* 11151.jpg in Resources */,
@@ -7712,6 +7761,7 @@
 				D0B10F291B93F02F002682AE /* PersonnalViewController.m in Sources */,
 				A54768841B9A7B1600ACC5C6 /* CurrentReservationItem.m in Sources */,
 				D020EAA41BB2C567007D856C /* VideoListViewController.m in Sources */,
+				EA5444B91CC70BDC00971A50 /* UIView+MJExtension.m in Sources */,
 				D09E9BAF1B9D395B00391156 /* WayListCell.m in Sources */,
 				D05ED1BC1B872E6900E60D5F /* RegsterViewController.m in Sources */,
 				A5CFD7671B93026A0063B7ED /* TWRDataSet.m in Sources */,
@@ -7748,6 +7798,7 @@
 				D0A52B941BB3FFDE000CC80C /* ALMoviePlayerControls.m in Sources */,
 				EA79A0DA1CC5F39100909F42 /* JiaoXiaoNameTableViewCell.m in Sources */,
 				D0B4636A1B9C34A500DBB974 /* MySuggestionController.m in Sources */,
+				EA5444B81CC70BDC00971A50 /* UIScrollView+MJRefresh.m in Sources */,
 				D0880A941BA6AB86006F7127 /* FirstChangePasswordController.m in Sources */,
 				D0A52B931BB3FFDE000CC80C /* ALMoviePlayerController.m in Sources */,
 				A5CFD7661B93026A0063B7ED /* TWRDataSet+Strings.m in Sources */,
@@ -7773,6 +7824,7 @@
 				D0A2370C1B8DD14200D1BFDD /* ExamReservationController.m in Sources */,
 				D0B10F741B93F529002682AE /* ASICloudFilesObject.m in Sources */,
 				D0A236DE1B8D965400D1BFDD /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				EA5444B71CC70BDC00971A50 /* UIScrollView+MJExtension.m in Sources */,
 				A5CFD7651B93026A0063B7ED /* TWRCircularChart.m in Sources */,
 				54558FF21B84C8F300EFFE1F /* FMResultSet.m in Sources */,
 				D0A236DF1B8D965400D1BFDD /* TPKeyboardAvoidingScrollView.m in Sources */,
@@ -7805,6 +7857,7 @@
 				D076842C1B8493520005043C /* TabBarView.m in Sources */,
 				D0B10F701B93F529002682AE /* ASICloudFilesCDNRequest.m in Sources */,
 				D00603111B957CBC0036F77A /* ReturnMoneyAction.m in Sources */,
+				EA5444B41CC70BDC00971A50 /* MJRefreshConst.m in Sources */,
 				D0B10F711B93F529002682AE /* ASICloudFilesContainer.m in Sources */,
 				D0B10F731B93F529002682AE /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				D00603971B96D6B50036F77A /* MKAnnotationView+WebCache.m in Sources */,
@@ -7854,6 +7907,7 @@
 				D00603A51B96D6B50036F77A /* UIImageView+WebCache.m in Sources */,
 				D042D9B41BCCAF7F009B3D03 /* DDBlockActionWrapper.m in Sources */,
 				A554AAFC1BDC93CC0058EC17 /* EvaluationAction1.m in Sources */,
+				EA5444B51CC70BDC00971A50 /* MJRefreshFooterView.m in Sources */,
 				D0A7B5011B85BC0B000527D5 /* AnswerCell.m in Sources */,
 				A5CFD7631B93026A0063B7ED /* TWRChartBuilder.m in Sources */,
 				D006039B1B96D6B50036F77A /* SDWebImageDecoder.m in Sources */,
@@ -7874,11 +7928,13 @@
 				D006039C1B96D6B50036F77A /* SDWebImageDownloader.m in Sources */,
 				54558FED1B84C8F300EFFE1F /* README.markdown in Sources */,
 				D0B10F7B1B93F529002682AE /* ASIS3Request.m in Sources */,
+				EA5444B61CC70BDC00971A50 /* MJRefreshHeaderView.m in Sources */,
 				D08420B81B90267C00779EC3 /* ExamRecordModel.m in Sources */,
 				D06A294D1BA157F800E2B1ED /* PlayerView.m in Sources */,
 				D00603571B96C2250036F77A /* NSObject+MJCoding.m in Sources */,
 				A54768531B98011100ACC5C6 /* JoinItem.m in Sources */,
 				D020EA8E1BB014F4007D856C /* VideoItem.m in Sources */,
+				EA5444B31CC70BDC00971A50 /* MJRefreshBaseView.m in Sources */,
 				EADBAE951C702EA10016B770 /* NewAnswerItem.m in Sources */,
 				D006031C1B9590FF0036F77A /* NormalReservationDetailCell.m in Sources */,
 				D00603361B95C69C0036F77A /* ChangePasswordController.m in Sources */,
@@ -8015,6 +8071,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = zhihuaLaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ledong yang (784P3R2228)";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RongQingSchool/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
@@ -8042,6 +8099,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = zhihuaLaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ledong yang (784P3R2228)";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RongQingSchool/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = (
