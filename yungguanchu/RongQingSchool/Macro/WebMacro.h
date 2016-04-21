@@ -52,10 +52,14 @@
 #define Action_OnlineRegis @"AppService/OnlineRegis.ashx?"
 
 //教练培训预约时间段显示
-#define Action_SelTraining @"AppService/SelTraining.ashx?"
+//#define Action_SelTraining @"AppService/SelTraining.ashx?"
+#define Action_SelTraining @"MoreAshx/GetTimeslot.ashx?"
+
 
 //提交培训预约
-#define Action_AddTrainingbook @"AppService/addTrainingbook.ashx?"
+//#define Action_AddTrainingbook @"AppService/addTrainingbook.ashx?"
+#define Action_AddTrainingbook @"MoreAshx/addTrainingbook.ashx?"
+
 
 //提交分车预约
 #define Action_AddCarorTrainbook @"AppService/addCarorTrainbook.ashx?"

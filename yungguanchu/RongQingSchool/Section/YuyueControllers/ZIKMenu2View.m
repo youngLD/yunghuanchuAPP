@@ -88,8 +88,8 @@ static NSInteger schoolButtonY;
 //        }
 
         UIButton *screenButton = [[UIButton alloc] init];
-        screenButton.frame = CGRectMake(60, bgView.frame.size.height-90, UISCREEN_SIZE.width-120, 40);
-        [screenButton setTitle:@"提交筛选" forState:UIControlStateNormal];
+        screenButton.frame = CGRectMake(60, 270, UISCREEN_SIZE.width-120, 40);
+        [screenButton setTitle:@"开始筛选" forState:UIControlStateNormal];
         [screenButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [bgView addSubview:screenButton];
         [screenButton setBackgroundColor:[UIColor colorWithRed:3/255.0 green:180/255.0 blue:248/255.0 alpha:1]];

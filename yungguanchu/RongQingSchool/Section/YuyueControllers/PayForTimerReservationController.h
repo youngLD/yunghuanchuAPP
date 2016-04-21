@@ -27,7 +27,10 @@
 
 @property(strong,nonatomic) IBOutlet UIView *moneyBgView;
 
+@property (weak, nonatomic) IBOutlet UIView *payBgView;
+
 @property(strong,nonatomic) IBOutlet UIView *tableBgView;
+@property (weak, nonatomic) IBOutlet UIButton *selectPayStyleBtn;
 
 @property(strong,nonatomic) IBOutlet UIButton *okBtn;
 
@@ -35,8 +38,9 @@
 
 @property(strong,nonatomic) IBOutlet UILabel *coachNameLb;
 @property(strong,nonatomic) IBOutlet UILabel *moneyLb;
-
+@property (assign,nonatomic) CGFloat totalIntegerMoney;
 @property(strong,nonatomic) NSString *totalMoney;
+@property (weak, nonatomic) IBOutlet UILabel *haveMoneyLabel;
 
 @property(strong,nonatomic) ActionView *actionView;
 

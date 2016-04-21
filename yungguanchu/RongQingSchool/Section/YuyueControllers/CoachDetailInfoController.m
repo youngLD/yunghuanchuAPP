@@ -60,16 +60,16 @@
         NSDictionary *jlxxDic = [[resultDic objectForKey:@"Result"] objectForKey:@"Jlxx"];
         self.dataDic = jlxxDic;
         self.nameLb.text = [jlxxDic objectForKey:@"Jlxm"];
-        self.headPic.layer.masksToBounds=YES;
-        self.headPic.layer.cornerRadius=self.headPic.frame.size.width/2;
+        self.headPic.layer.masksToBounds = YES;
+        self.headPic.layer.cornerRadius = self.headPic.frame.size.width/2;
         //NSLog(@"%@",[NSString stringWithFormat:@"http://%@",[jlxxDic objectForKey:@"Jlpic"]]);
        [self.headPic sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://%@",[jlxxDic objectForKey:@"Jlpic"]]] placeholderImage:[UIImage imageNamed:@"teacher_header"]];
 
         self.genderLb.text = [jlxxDic objectForKey:@"Jlxb"];
-        self.jiaolingLb.text = [NSString stringWithFormat:@"教龄: %@",[jlxxDic objectForKey:@"Jl"]];
-        self.moenyLb.text = [NSString stringWithFormat:@"%@/学时",[jlxxDic objectForKey:@"OrderPrice"]];
+        self.jiaolingLb.text = [NSString stringWithFormat:@"%@年教龄",[jlxxDic objectForKey:@"Jl"]];
+        self.moenyLb.text = [NSString stringWithFormat:@"%@",[jlxxDic objectForKey:@"OrderPrice"]];
         self.callLb.text = [NSString stringWithFormat:@"电话: %@",[jlxxDic objectForKey:@"Jldh"]];
-        self.groupLb.text = [NSString stringWithFormat:@"%@",[jlxxDic objectForKey:@"Jlsszd"]];
+        self.groupLb.text = [NSString stringWithFormat:@"中队:%@",[jlxxDic objectForKey:@"Jlsszd"]];
         self.orderShengyuNum = [[jlxxDic objectForKey:@"OrderShengyuNum"] intValue];
         
         for(UIImageView *starPic in self.starView.subviews){
@@ -137,11 +137,11 @@
         }
     }
     
-    if(totalMoney > [UserInfo shareUserInfo].leftMoney.floatValue){
-        [Utils showMessage:@"haveNoMoreMoney"];
-        return;
-    }
-    
+//    if(totalMoney > [UserInfo shareUserInfo].leftMoney.floatValue){
+//        [Utils showMessage:@"haveNoMoreMoney"];
+//        return;
+//    }
+
     NSDictionary *postParam = [NSDictionary dictionaryWithObjectsAndKeys:
                                [UserInfo shareUserInfo].uId,@"studentId",
                                self.timerReservationItem.Jlid,@"jlid",
@@ -151,7 +151,8 @@
     PayForTimerReservationController *payForTimerYuyueController = [[PayForTimerReservationController alloc] init];
     payForTimerYuyueController.postParam = postParam;
     payForTimerYuyueController.selectSoltListItems = self.selectSoltListItems;
-    payForTimerYuyueController.totalMoney = [NSString stringWithFormat:@"￥%.2f",totalMoney];
+    payForTimerYuyueController.totalMoney = [NSString stringWithFormat:@"￥ %.2f",totalMoney];
+    payForTimerYuyueController.totalIntegerMoney = totalMoney;
     payForTimerYuyueController.coachName = [self.dataDic objectForKey:@"Jlxm"];
     [self.navigationController pushViewController:payForTimerYuyueController animated:YES];
 }

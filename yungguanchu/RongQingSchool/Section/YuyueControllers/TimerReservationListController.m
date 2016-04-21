@@ -16,6 +16,7 @@
 #import<CoreText/CoreText.h>
 
 #import "ZIKMenu2View.h"
+static NSInteger sortMarkInteger = 0;
 @interface TimerReservationListController ()<ZIKMenu2ViewDelegate>
 @property (nonatomic, strong) NSString *orderdate;
 @property (nonatomic, strong) NSString *price;//价格区间	说明（以‘|’分割，格式【a|b】表示价格在a与b之间）
@@ -77,7 +78,7 @@
 - (void)requestSchools {
     self.requestSchool = [[WebRequest alloc] init];
      [self.requestSchool requestGetWithAction:Action_SchoolList WithParameter:nil successBlock:^(NSDictionary *resultDic) {
-         CLog(@"%@",resultDic);
+         //CLog(@"%@",resultDic);
          if ([resultDic[@"Success"] integerValue] == 1) {
              self.schoolMArr = resultDic[@"Result"];
              if (!self.menu2View) {
@@ -93,7 +94,7 @@
          }
 
      } failedBlock:^(NSDictionary *resultDic) {
-         CLog(@"%@",resultDic);
+         //CLog(@"%@",resultDic);
 
      } ];
 //    self.requestSchool = [[WebRequest alloc] init];
@@ -141,8 +142,8 @@
 }
 
 -(void)requestData{
-    CLog(@"school:%@",self.school);
-    CLog(@"selectedDate%@",self.selectedDate);
+    //CLog(@"school:%@",self.school);
+    //CLog(@"selectedDate%@",self.selectedDate);
 //    NSDictionary *postParam = [NSDictionary dictionaryWithObjectsAndKeys:
 //                               [UserInfo shareUserInfo].uId,@"studentId",
 //                               self.selectedDate,@"orderdate",
@@ -162,11 +163,11 @@
     postParam[@"price"] = self.price;
     postParam[@"school"] = self.school;
     postParam[@"orderby"] = self.orderby;//
-    CLog(@"param:%@",postParam);
+    //CLog(@"param:%@",postParam);
     self.request = [[WebRequest alloc] init];
     [Utils addProgressHUBInView:self.view textInfo:@"loading" delegate:nil];
     [self.request requestGetWithAction:Action_TrainingJlList WithParameter:postParam successBlock:^(NSDictionary *resultDic) {
-        CLog(@"%@",resultDic);
+        //CLog(@"%@",resultDic);
         
         //菜单日期
         NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -199,14 +200,15 @@
 
         }
         [self.timeAry addObjectsFromArray:@[@"默认排序",@"教龄由高到低",@"星级由高到低",@"价格由高到低",@"价格由低到高"]];
-        CLog(@"%@",self.timeAry);
+        //CLog(@"%@",self.timeAry);
         int i = 0;
         for(UIButton *btn in @[self.dateBtn1,self.dateBtn2,self.dateBtn3,self.dateBtn4,self.dateBtn5]){
             [btn setTitle:[NSString stringWithFormat:@"       %@",self.timeAry[i]] forState:UIControlStateNormal];
             btn.tag = i;
             i++;
         }
-        
+//        [self.dateBtn1 setTitleColor:[UIColor colorWithRed:3/255.0 green:180/255.0 blue:248/255.0 alpha:1] forState:UIControlStateNormal];
+
         //数据源
         if(self.dataAry){
             [self.dataAry removeAllObjects];
@@ -353,6 +355,19 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == self.tableview) {
+        CoachDetailInfoController *coachDetailViewController = [[CoachDetailInfoController alloc] init];
+        TimerReservationItem *item = self.dataAry[indexPath.row];
+
+        //教练星级如果为空，不让进入预约的详情界面
+        if(![Utils isNullOrEmpty:item.CoachStars]){
+            item.ordate = self.selectedDate;
+            coachDetailViewController.timerReservationItem = item;
+
+            [self.navigationController pushViewController:coachDetailViewController animated:YES];
+        }
+
+    }
     if(tableView == self.coachTableview){
         TimerReservationItem *item = self.coachAry[indexPath.row];
         self.selectedCoachID = item.Jlid;
@@ -379,6 +394,14 @@
 #pragma mark - 菜单弹出
 -(IBAction)selectMenu1Btn:(UIButton *)sender{
     self.orderby = NSStringFromInt(sender.tag);
+    for(UIButton *btn in @[self.dateBtn1,self.dateBtn2,self.dateBtn3,self.dateBtn4,self.dateBtn5]){
+        if (btn.tag == sortMarkInteger) {
+            [btn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        }
+    }
+
+    sortMarkInteger = sender.tag;
+    [sender setTitleColor:[UIColor colorWithRed:3/255.0 green:180/255.0 blue:248/255.0 alpha:1] forState:UIControlStateNormal];
     self.titleLb1.text = self.timeAry[sender.tag];
     [self showOrHideMenu1:nil];
     
@@ -427,11 +450,14 @@
     if(self.btn2.isSelected){
         if(self.menu2IsShow){
             [self hideMenu2completion:^(BOOL finished) {
-                
+                self.titlePic2.image = [UIImage imageNamed:@"list_arrow_selected"];
+                self.titlePic2.transform = CGAffineTransformMakeRotation(0);
+
             }];
         }
         else{
             [self showMenu2];
+            self.titlePic2.transform = CGAffineTransformMakeRotation(M_PI/1000*999.99);
         }
     }
     else{
@@ -467,7 +493,7 @@
         self.grayBgControl.hidden = YES;
         self.btn1.userInteractionEnabled = YES;
         self.btn2.userInteractionEnabled = YES;
-        CLog(@"111111");
+        //CLog(@"111111");
         completion1(YES);
     }];
 }
@@ -476,6 +502,9 @@
     self.btn1.userInteractionEnabled = NO;
     self.btn2.userInteractionEnabled = NO;
     self.grayBgControl.hidden = NO;
+    if (self.dateBtn1.tag == sortMarkInteger) {
+       [self.dateBtn1 setTitleColor:[UIColor colorWithRed:3/255.0 green:180/255.0 blue:248/255.0 alpha:1] forState:UIControlStateNormal];
+    }
     [UIView animateWithDuration:0.3 animations:^{
 //        CGRect r = self.menuBgView1.frame;
 //        r.origin.y = CGRectGetMaxY(self.indicatorView.frame);
@@ -510,7 +539,7 @@
 }
 
 -(void)showMenu2{
-    CLog(@"```````%f",self.menuBgView2.frame.size.height);
+    //CLog(@"```````%f",self.menuBgView2.frame.size.height);
     self.btn1.userInteractionEnabled = NO;
     self.btn2.userInteractionEnabled = NO;
     self.grayBgControl.hidden = NO;
@@ -531,7 +560,7 @@
         self.btn1.userInteractionEnabled = YES;
         self.btn2.userInteractionEnabled = YES;
         self.grayBgControl.hidden = NO;
-        CLog(@"222222");
+        //CLog(@"222222");
     }];
 }
 

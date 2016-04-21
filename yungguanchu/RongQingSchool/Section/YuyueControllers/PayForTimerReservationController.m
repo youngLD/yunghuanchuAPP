@@ -58,7 +58,19 @@
 
 -(void)initView{
     self.view.backgroundColor = MAIN_VIEW_COLOR;
-    
+    //self.haveMoneyLabel.t4e
+    NSMutableAttributedString *AttributedStr = [[NSMutableAttributedString alloc] initWithString:[NSString  stringWithFormat:@"余额:%.1f元",[UserInfo shareUserInfo].leftMoney.floatValue]];
+
+    [AttributedStr addAttribute:NSForegroundColorAttributeName
+
+                          value:[UIColor colorWithRed:152/255.0f green:214.0/255.0f blue:113.0/255.0f alpha:1.0f]
+
+                          range:NSMakeRange(3, AttributedStr.length-3)];
+
+    self.haveMoneyLabel.attributedText = AttributedStr;
+    //self.haveMoneyLabel.text = [NSString stringWithFormat:@"余额:%.1f元",[UserInfo shareUserInfo].leftMoney.floatValue];
+    [self.selectPayStyleBtn setImage:[UIImage imageNamed:@"unselect_circle"] forState:UIControlStateNormal];
+    [self.selectPayStyleBtn setImage:[UIImage imageNamed:@"select_circle"] forState:UIControlStateSelected];
     self.actionView = [[[NSBundle mainBundle] loadNibNamed:@"ActionView" owner:self options:nil] lastObject];
     self.actionView.titleLb.text = @"确定预约？";
     [self.actionView.leftBtn setTitle:@"取消" forState:UIControlStateNormal];
@@ -105,11 +117,19 @@
     r = self.moneyBgView.frame;
     r.origin.y = CGRectGetMaxY(self.tableview.frame);
     self.moneyBgView.frame = r;
+
+    r = self.payBgView.frame;
+    r.origin.y = CGRectGetMaxY(self.moneyBgView.frame);
+    self.payBgView.frame = r;
     
     r = self.tableBgView.frame;
-    r.size.height = CGRectGetMaxY(self.moneyBgView.frame);
+    r.size.height = CGRectGetMaxY(self.payBgView.frame);
     self.tableBgView.frame = r;
-    
+
+//    r = self.moneyBgView.frame;
+//    r.size.height = CGRectGetMaxY(self.moneyBgView.frame);
+//    self.payBgView.frame = r;
+
     r = self.okBtn.frame;
     r.origin.y = CGRectGetMaxY(self.tableBgView.frame)+13;
     self.okBtn.frame = r;
@@ -117,7 +137,7 @@
 }
 
 -(void)commit:(id)sender{
-    
+
     self.request = [[WebRequest alloc] init];
     [Utils addProgressHUBInView:self.view textInfo:@"loading" delegate:nil];
     [self.request requestGetWithAction:Action_AddTrainingbook WithParameter:self.postParam successBlock:^(NSDictionary *resultDic) {
@@ -132,20 +152,30 @@
 
 //显示确认action
 -(IBAction)showAction:(UIButton *)sender{
+    if (!self.selectPayStyleBtn.selected) {
+        [Utils showMessage:@"请选择支付方式"];
+        return;
+    }
+    CLog(@"self.totalMoney.floatValue:%f        [UserInfo shareUserInfo].leftMoney:%f",self.totalMoney.floatValue,[UserInfo shareUserInfo].leftMoney.floatValue);
+    if(self.totalIntegerMoney > [UserInfo shareUserInfo].leftMoney.floatValue){
+        [Utils showMessage:@"haveNoMoreMoney"];
+        return;
+    }
+
     TabBarViewController *tabbarVc = (TabBarViewController *)self.tabBarController;
     [self.tabBarController.view addSubview:self.actionView];
     [tabbarVc.view bringSubviewToFront:self.actionView];
-    
-        tabbarVc.grayBtn.hidden = NO;
-        [UIView animateWithDuration:0.3 animations:^{
-            CGRect r = self.actionView.frame;
-            r.origin.y = tabbarVc.view.frame.size.height-r.size.height;
-            
-            self.actionView.frame = r;
-            
-        } completion:^(BOOL finished) {
-            
-        }];
+
+    tabbarVc.grayBtn.hidden = NO;
+    [UIView animateWithDuration:0.3 animations:^{
+        CGRect r = self.actionView.frame;
+        r.origin.y = tabbarVc.view.frame.size.height-r.size.height;
+
+        self.actionView.frame = r;
+
+    } completion:^(BOOL finished) {
+
+    }];
 }
 
 //隐藏确认action
@@ -193,6 +223,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)selectPayStyleBtnClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
 }
 
 /*
