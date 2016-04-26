@@ -35,7 +35,7 @@ extern BOOL isMainViewDisplaying;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"志华驾校";
+    self.title = @"驾校详情";
     self.navigationItem.leftBarButtonItems = [self getNewBackButtons];
     
     if([UserInfo shareUserInfo].isLogin){

@@ -130,6 +130,7 @@ extern BOOL isMainViewDisplaying;
         [titleLab setText:@"公告栏"];
         [view addSubview:titleLab];
         UIButton *moreBtn=[[UIButton alloc]initWithFrame:CGRectMake(with-60, 20, 50, 20)];
+        [moreBtn.titleLabel setFont:[UIFont systemFontOfSize:15]];
         [moreBtn setTitle:@"更多" forState:UIControlStateNormal];
         [moreBtn setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [moreBtn addTarget:self action:@selector(moreNewsBtnAcion) forControlEvents:UIControlEventTouchUpInside];

@@ -6207,7 +6207,7 @@
 				TargetAttributes = {
 					D07683A11B841A830005043C = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 784P3R2228;
+						DevelopmentTeam = L674B6W9DX;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -8095,8 +8095,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = zhihuaAppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = zhihuaLaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ledong yang (784P3R2228)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RongQingSchool/PrefixHeader.pch";
@@ -8112,9 +8112,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/RongQingSchool/Vender/GtSdkLib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhihuajiaxiao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yimengyijia;
 				PRODUCT_NAME = yunguanchuAPP;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fa069151-7578-4c34-9e0a-21ad3f66a9ea";
 			};
 			name = Debug;
 		};
@@ -8123,8 +8123,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = zhihuaAppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = zhihuaLaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ledong yang (784P3R2228)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: ledong yang (784P3R2228)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: ledong yang (PU49MBSRXC)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ledong yang (PU49MBSRXC)";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/RongQingSchool/PrefixHeader.pch";
@@ -8140,9 +8140,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/RongQingSchool/Vender/GtSdkLib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.zhihuajiaxiao;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yimengyijia;
 				PRODUCT_NAME = yunguanchuAPP;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "fa069151-7578-4c34-9e0a-21ad3f66a9ea";
 			};
 			name = Release;
 		};
